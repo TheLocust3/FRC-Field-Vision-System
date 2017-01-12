@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 
 from detectors.detector import *
+from detectors.game_objects.fuel import *
 
 class FuelDetector(Detector):
 
@@ -11,8 +12,12 @@ class FuelDetector(Detector):
         image = self.__create_fuel_mask(new_image)
 
         contours, hierarchy = cv2.findContours(image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        fuel = []
 
-        return ()
+        for contour in contours:
+            fuel.append(Fuel(contour))
+
+        return fuel
 
     def __otsu_transform(self, image):
         grey = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)

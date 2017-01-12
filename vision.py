@@ -13,8 +13,8 @@ class Vision:
             ret, im = self.__capture.read()
 
             for detector in self.__detectors:
-                points = self.__flattener.flatten(detector.run(im))
-                print points
+                fuel = self.__flattener.flatten(detector.run(im))
+                print fuel
 
     def shutdown(self):
         self.__capture.release()
