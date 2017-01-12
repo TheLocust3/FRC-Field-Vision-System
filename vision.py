@@ -18,8 +18,6 @@ class Vision:
                     fuel.flatten(self.__flattener)
                     all_fuel.append(fuel)
 
-                print all_fuel
-
     def shutdown(self):
         self.__capture.release()
         cv2.destroyAllWindows()
