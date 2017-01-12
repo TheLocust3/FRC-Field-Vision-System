@@ -13,8 +13,12 @@ class Vision:
             ret, im = self.__capture.read()
 
             for detector in self.__detectors:
-                fuel = self.__flattener.flatten(detector.run(im))
-                print fuel
+                all_fuel = []
+                for fuel in detector.run(im):
+                    fuel.flatten(self.__flattener)
+                    all_fuel.append(fuel)
+
+                print all_fuel
 
     def shutdown(self):
         self.__capture.release()
