@@ -5,6 +5,7 @@ A vision system to detect field elements and robots. Built to be used with [FRC-
 
 ### To-Do  
  - Create flattener to flatten field coordinates
+ - Tune ball and robot detectors
  - Create sender to send over socket
  - Create sender to send over SmartDashboard
  - Create vision system for a camera mounted to the robot

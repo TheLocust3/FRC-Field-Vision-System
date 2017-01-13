@@ -17,7 +17,7 @@ class RobotDetector(Detector):
         
         prepped_image = self.__prepare_image(cut_image)
         contours, hierarchy = cv2.findContours(prepped_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        grouped_contours = self.__group_contours(contours)
+        grouped_contours = self.__group_similar_contours(contours)
 
         robots = self.__find_robots(image, grouped_contours)
         array = []
@@ -27,7 +27,7 @@ class RobotDetector(Detector):
         return array
 
     # Group contours by contours that are horizontalish and verticalish with eachother
-    def __group_contours(self, contours):
+    def __group_similar_contours(self, contours):
         grouped_contours = [] # Format: each group is an array that consists of 0 -> mid_y, 1 -> mid_x, 2 -> array of each contour
         for contour in contours:
             x, y, w, h = cv2.boundingRect(contour)
