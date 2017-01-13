@@ -2,8 +2,9 @@ import cv2
 
 class Vision:
     
-    def __init__(self, detectors, flattener, sender, capture_location):
+    def __init__(self, detectors, preprocessor, flattener, sender, capture_location):
         self.__detectors = detectors
+        self.__preprocessor = preprocessor
         self.__flattener = flattener
         self.__sender = sender
         self.__capture = cv2.VideoCapture(capture_location)
@@ -11,6 +12,7 @@ class Vision:
     def run(self):
         while(self.__capture.isOpened()):
             ret, im = self.__capture.read()
+            im = self.__preprocessor.preprocess_image(im)
 
             for detector in self.__detectors:
                 all_game_object = []

@@ -136,7 +136,7 @@ def prepare_image(im):
 
     return final_im
 
-cap = cv2.VideoCapture('test-video2.mp4')
+cap = cv2.VideoCapture('test_videos/match_video.mp4')
 
 while(cap.isOpened()):
     ret, im = cap.read()

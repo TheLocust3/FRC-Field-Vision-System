@@ -22,7 +22,7 @@ class FuelDetector(Detector):
 
     def __mask_image_for_fuel(self, image):
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-        lower = np.array([20, 0, 110])
+        lower = np.array([20, 90, 110])
         upper = np.array([40, 255, 255])
         mask = cv2.inRange(hsv, lower, upper)
 
