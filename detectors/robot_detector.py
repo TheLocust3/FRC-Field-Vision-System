@@ -13,9 +13,7 @@ class RobotDetector(Detector):
     BLUE_RED_TOLERANCE = 5
 
     def run(self, image):
-        cut_image = image[0:300, 300:(image.shape[1] - 200)]
-        
-        prepped_image = self.__prepare_image(cut_image)
+        prepped_image = self.__prepare_image(image)
         contours, hierarchy = cv2.findContours(prepped_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         grouped_contours = self.__group_similar_contours(contours)
 
