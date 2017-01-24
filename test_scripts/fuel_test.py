@@ -2,7 +2,7 @@ import cv2
 import cv
 import numpy as np
 
-cap = cv2.VideoCapture('test_videos/match_video.mp4')
+cap = cv2.VideoCapture('test_videos/ball_video.mp4')
 
 while(cap.isOpened()):
     ret, im = cap.read()

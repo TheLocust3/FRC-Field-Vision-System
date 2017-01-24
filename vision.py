@@ -10,8 +10,13 @@ class Vision:
         self.__capture = cv2.VideoCapture(capture_location)
 
     def run(self):
-        while(self.__capture.isOpened()):
+        i = 0
+        while (self.__capture.isOpened()):
             ret, im = self.__capture.read()
+            
+            if (i == 0):
+                self.__flattener.setup(im)
+
             im = self.__preprocessor.preprocess_image(im)
 
             for detector in self.__detectors:
@@ -19,6 +24,7 @@ class Vision:
                 for game_object in detector.run(im):
                     game_object.flatten(self.__flattener)
                     all_game_object.append(game_object)
+            i += 0
 
     def shutdown(self):
         self.__capture.release()

@@ -9,5 +9,5 @@ class Robot(GameObject):
 
     def flatten(self, flattener):
         location = flattener.flatten([self.__x, self.__y])
-        self.__x = location[0]
-        self.__y = location[1]
+        self.__real_x = location[0]
+        self.__real_y = location[1]
